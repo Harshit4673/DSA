@@ -1,3 +1,10 @@
 {
-  "C_Cpp.default.compilerPath": "C:/MinGW/bin/g++.exe"
+  "C_Cpp.default.compilerPath": "C:/MinGW/bin/g++.exe",
+  "files.associations": {
+    "iostream": "cpp",
+    "vector": "cpp",
+    "array": "cpp",
+    "string": "cpp",
+    "stack": "cpp"
+  }
 }
