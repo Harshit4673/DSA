@@ -16,7 +16,7 @@ struct TreeNode
 class Solution
 {
 public:
-    void traverse(TreeNode *root, vector<int> &ans)
+    void traverse(TreeNode *root, vector<int> &ans)  // time O(n)and spaceo(n)
     {
         if (root == NULL)
             return;
@@ -32,6 +32,42 @@ public:
         return ans;
     }
 };
+
+
+//morris traversal  - optimal , time - (O(n) approx, O(n)+O(n)) , space - O(1)
+vector<int> inorderTraversal(TreeNode *root)
+{
+    vector<int> res;
+    TreeNode *curr = root;
+    while (curr != NULL)
+    {
+        if (curr->left == NULL)
+        {
+            res.push_back(curr->val);
+            curr = curr->right;
+        }
+        else
+        {
+            TreeNode *prev = curr->left;
+            while (prev->right && prev->right != curr)
+            {
+                prev = prev->right;
+            }
+            if (prev->right == NULL)
+            {
+                prev->right = curr;
+                curr = curr->left;
+            }
+            else
+            {
+                prev->right = NULL;
+                res.push_back(curr->val);
+                curr = curr->right;
+            }
+        }
+    }
+    return res;
+}
 
 int main()
 {
